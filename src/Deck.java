@@ -1,7 +1,7 @@
 public class Deck {
 
     private Card[] cards;
-    int nextCard;
+    private int nextCard;
 
     public Deck() {
         cards = new Card[48];
