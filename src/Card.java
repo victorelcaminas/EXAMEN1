@@ -33,6 +33,10 @@ public class Card {
         return s;
     }
 
+    public int getSuit() {
+        return suit;
+    }
+
     private String getSuitStr() {
         String s = "";
         switch (suit) {

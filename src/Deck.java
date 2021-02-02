@@ -41,10 +41,45 @@ public class Deck {
     @Override
     public String toString() {
         String s = "";
-        for (Card c: cards) {
-            s += c + "\n";
+        String[] lines = new String[4];
+        Boolean[] first = new Boolean[4];
+        for (int i = 0; i < lines.length; i++) {
+            lines[i] = "";
+            first[i] = true;
+        }
+        for (int i = 0; i <= nextCard; i++) {
+            int index = cards[i].getSuit() - 1;
+            if (first[index]) {
+                first[index] = false;
+            } else {
+                lines[index] += ", ";
+            }
+            lines[index] += cards[i];
+        }
+        for (int i = 0 ; i < lines.length; i++) {
+            s += lines[i] + "\n";
         }
         return s;
     }
 
+    public String toString2() {
+        String oros = "", copas = "", espadas = "", bastos = "";
+        for (Card c: cards) {
+            switch (c.getSuit()) {
+                case Card.OROS:
+                    oros += c + ", ";
+                    break;
+                case Card.COPAS:
+                    copas += c + ", ";
+                    break;
+                case Card.ESPADAS:
+                    espadas += c + ", ";
+                    break;
+                case Card.BASTOS:
+                    bastos += c + ", ";
+                    break;
+            }
+        }
+        return oros + "\n" + copas + "\n" + espadas + "\n" + bastos + "\n";
+    }
 }
