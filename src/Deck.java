@@ -13,4 +13,29 @@ public class Deck {
         }
     }
 
+    public void shuffle() {
+        for (int i = 0; i < cards.length; i++) {
+            int aleat = (int) (Math.random() * cards.length);
+            Card temp = cards[i];
+            cards[i] = cards[aleat];
+            cards[aleat] = temp;
+        }
+        /* for (int i = 0; i < 10000; i++) {
+            int alea1 = (int) (Math.random() * cards.length);
+            int alea2 = (int) (Math.random() * cards.length);
+            Card temp = cards[alea1];
+            cards[alea1] = cards[alea2];
+            cards[alea2] = temp;
+        } */
+    }
+
+    @Override
+    public String toString() {
+        String s = "";
+        for (Card c: cards) {
+            s += c + "\n";
+        }
+        return s;
+    }
+
 }

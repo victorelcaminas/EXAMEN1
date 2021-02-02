@@ -1,6 +1,7 @@
 public class Main {
     public static void main(String[] args) {
-        Card c = new Card(1,1);
-        System.out.println(c);
+        Deck d = new Deck();
+        d.shuffle();
+        System.out.println(d);
     }
 }
