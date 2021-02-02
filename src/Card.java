@@ -37,6 +37,10 @@ public class Card {
         return suit;
     }
 
+    public int getNumber() {
+        return number;
+    }
+
     private String getSuitStr() {
         String s = "";
         switch (suit) {

@@ -1,3 +1,7 @@
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+
 public class Deck {
 
     private Card[] cards;
@@ -81,5 +85,23 @@ public class Deck {
             }
         }
         return oros + "\n" + copas + "\n" + espadas + "\n" + bastos + "\n";
+    }
+
+    public void writeToFile(String fileName) throws IOException {
+        PrintWriter out = null;
+        try {
+            out = new PrintWriter(new FileWriter(fileName));
+            out.println("number,suit");
+            for (int i = 0; i <= nextCard; i++) {
+                int num = cards[i].getNumber();
+                int suit = cards[i].getSuit();
+                out.println(num + "," +suit);
+            }
+        } finally {
+            if (out != null) {
+                out.close();
+            }
+        }
+
     }
 }
