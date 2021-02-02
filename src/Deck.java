@@ -1,6 +1,7 @@
 public class Deck {
 
     private Card[] cards;
+    int nextCard;
 
     public Deck() {
         cards = new Card[48];
@@ -11,6 +12,7 @@ public class Deck {
                 count ++;
             }
         }
+        nextCard = 47;
     }
 
     public void shuffle() {
@@ -27,6 +29,13 @@ public class Deck {
             cards[alea1] = cards[alea2];
             cards[alea2] = temp;
         } */
+    }
+
+    public Card extractCard() {
+        // return cards[nextCard--];
+        Card c = cards[nextCard];
+        nextCard --;
+        return  c;
     }
 
     @Override
