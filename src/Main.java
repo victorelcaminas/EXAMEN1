@@ -10,5 +10,7 @@ public class Main {
         System.out.println(c1);
         System.out.println(c2);
         d.writeToFile("cards.csv");
+        Deck d2 = Deck.readFromFile("cards.csv");
+        System.out.println(d2);
     }
 }

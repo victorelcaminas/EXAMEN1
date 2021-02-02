@@ -1,6 +1,4 @@
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.*;
 
 public class Deck {
 
@@ -17,6 +15,14 @@ public class Deck {
             }
         }
         nextCard = 47;
+    }
+
+    public void insertCard(Card card, int pos) {
+        cards[pos] = card;
+    }
+
+    public void setNextCard(int nextCard) {
+        this.nextCard = nextCard;
     }
 
     public void shuffle() {
@@ -103,5 +109,30 @@ public class Deck {
             }
         }
 
+    }
+
+    public static Deck readFromFile(String fileName) throws IOException {
+        BufferedReader input = null;
+        Deck deck = new Deck();
+        try {
+            input = new BufferedReader(new FileReader(fileName));
+            input.readLine();
+            String line;
+            int pos = 0;
+            while ((line = input.readLine()) != null) {
+                String[] items = line.split(",");
+                int num = Integer.parseInt(items[0]);
+                int suit = Integer.parseInt(items[1]);
+                Card c = new Card(num, suit);
+                deck.insertCard(c, pos);
+                pos++;
+            }
+            deck.setNextCard(pos - 1);
+            return  deck;
+        } finally {
+            if (input != null) {
+                input.close();
+            }
+        }
     }
 }
